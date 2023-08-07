@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -11,15 +12,14 @@ namespace TodoApp.Models
 {
     class TodoModel : INotifyPropertyChanged
     {
-        /// <summary>
-        /// Current ToDo row creation date
-        /// </summary>
+        [JsonProperty(PropertyName = "creationDate")]
         public DateTime CreationDate { get; set; } = DateTime.Now;
 
         private bool _isDone; 
         private string _text;
 
-        public bool isDone
+        [JsonProperty(PropertyName = "isDone")]
+        public bool IsDone
         {
             get { return _isDone; }
             set 
@@ -30,6 +30,8 @@ namespace TodoApp.Models
                 OnPropertyChanged("IsDone");
             }
         }
+
+        [JsonProperty(PropertyName = "text")]
         public string Text
         {
             get { return _text; }
