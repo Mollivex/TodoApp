@@ -21,10 +21,23 @@ namespace TodoApp.Services
         }
         public BindingList<TodoModel> LoadData()
         {
-
-            return null;
+            var fileExists = File.Exists(PATH);
+            if(!fileExists)
+            {
+                File.CreateText(PATH).Dispose();
+                return new BindingList<TodoModel>();
+            }
+            using (var reader = File.OpenText(PATH))
+            {
+                var fileText = reader.ReadToEnd();
+                return JsonConvert.DeserializeObject<BindingList<TodoModel>>(fileText);
+            }
         }
 
+        /// <summary>
+        /// Save data from rows in file
+        /// </summary>
+        /// <param name="todoDataList"></param>
         public void SaveData(BindingList<TodoModel> todoDataList)
         {
             using (StreamWriter writer = File.CreateText(PATH))
