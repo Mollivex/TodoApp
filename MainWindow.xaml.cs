@@ -16,6 +16,7 @@ using System.ComponentModel;
 using TodoApp.Models;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using TodoApp.Services;
 
 namespace TodoApp
 {
@@ -28,6 +29,8 @@ namespace TodoApp
         /// Data container(list) for Models
         /// </summary>
         private BindingList<TodoModel> _todoDataList;
+
+        private FileIOService fileIOService;
         public MainWindow()
         {
             InitializeComponent();
