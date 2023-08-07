@@ -26,11 +26,16 @@ namespace TodoApp
     public partial class MainWindow : Window
     {
         /// <summary>
+        /// Path to .json file near .EXE executive file
+        /// </summary>
+        private readonly string PATH = $"{Environment.CurrentDirectory}\\todoDataList.json";
+
+        /// <summary>
         /// Data container(list) for Models
         /// </summary>
         private BindingList<TodoModel> _todoDataList;
 
-        private FileIOService fileIOService;
+        private FileIOService _fileIOService;
         public MainWindow()
         {
             InitializeComponent();
@@ -38,12 +43,19 @@ namespace TodoApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-              _todoDataList = new BindingList<TodoModel>()
+            _fileIOService = new FileIOService(PATH);
+
+            try
             {
-                new TodoModel{Text = "test"},
-                new TodoModel{Text = "test1"},
-                new TodoModel{Text = "test2", isDone = true},
-            };
+                // the operation of accessing to hard disk where data is stored using _fileIOService service
+                _todoDataList = _fileIOService.LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                this.Close();
+            }
+
 
             dgTodoList.ItemsSource = _todoDataList;
             _todoDataList.ListChanged += _todoData_ListChanged;
@@ -53,7 +65,15 @@ namespace TodoApp
         {
             if(e.ListChangedType == ListChangedType.ItemAdded || e.ListChangedType == ListChangedType.ItemDeleted || e.ListChangedType == ListChangedType.ItemChanged )
             {
+                try
+                {
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    this.Close();
+                }
             }
         }
     }
