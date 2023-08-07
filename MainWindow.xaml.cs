@@ -56,7 +56,6 @@ namespace TodoApp
                 this.Close();
             }
 
-
             dgTodoList.ItemsSource = _todoDataList;
             _todoDataList.ListChanged += _todoData_ListChanged;
         }
@@ -65,9 +64,10 @@ namespace TodoApp
         {
             if(e.ListChangedType == ListChangedType.ItemAdded || e.ListChangedType == ListChangedType.ItemDeleted || e.ListChangedType == ListChangedType.ItemChanged )
             {
+                // save input file data to hard disk
                 try
                 {
-
+                    _fileIOService.SaveData(sender);
                 }
                 catch (Exception ex)
                 {

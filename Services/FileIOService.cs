@@ -43,7 +43,7 @@ namespace TodoApp.Services
         /// Save data from rows in file
         /// </summary>
         /// <param name="todoDataList"></param>
-        public void SaveData(BindingList<TodoModel> todoDataList)
+        public void SaveData(object todoDataList)
         {
             using (StreamWriter writer = File.CreateText(PATH))
             {
