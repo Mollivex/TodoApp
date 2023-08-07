@@ -34,7 +34,7 @@ namespace TodoApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            _todoDataList = new BindingList<TodoModel>()
+              _todoDataList = new BindingList<TodoModel>()
             {
                 new TodoModel{Text = "test"},
                 new TodoModel{Text = "test1"},
@@ -47,26 +47,9 @@ namespace TodoApp
 
         private void _todoData_ListChanged(object sender, ListChangedEventArgs e)
         {
-            switch (e.ListChangedType)
+            if(e.ListChangedType == ListChangedType.ItemAdded || e.ListChangedType == ListChangedType.ItemDeleted || e.ListChangedType == ListChangedType.ItemChanged )
             {
-                case ListChangedType.Reset:
-                    break;
-                case ListChangedType.ItemAdded:
-                    break;
-                case ListChangedType.ItemDeleted:
-                    break;
-                case ListChangedType.ItemMoved:
-                    break;
-                case ListChangedType.ItemChanged:
-                    break;
-                case ListChangedType.PropertyDescriptorAdded:
-                    break;
-                case ListChangedType.PropertyDescriptorDeleted:
-                    break;
-                case ListChangedType.PropertyDescriptorChanged:
-                    break;
-                default:
-                    break;
+
             }
         }
     }
