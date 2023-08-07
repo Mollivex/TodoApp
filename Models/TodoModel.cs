@@ -23,8 +23,8 @@ namespace TodoApp.Models
         }
         public string Text
         {
-            get { return Text; }
-            set { Text = value; }
+            get { return _text; }
+            set { _text = value; }
         }
 
 

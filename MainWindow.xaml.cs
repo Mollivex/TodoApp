@@ -31,8 +31,6 @@ namespace TodoApp
             InitializeComponent();
         }
 
-        private void dgTodoList_SelectionChanged(object sender, SelectionChangedEventArgs e) { }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _todoData = new BindingList<TodoModel>()
