@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="TodoApp" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dgTodoList" FontSize="16" FontWeight="Bold" Margin="10" SelectionChanged="dgTodoList_SelectionChanged">
+        <DataGrid x:Name="dgTodoList" FontSize="16" FontWeight="Bold" Margin="10" SelectionChanged="dgTodoList_SelectionChanged"c AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn IsReadOnly="False" Header="CreationDate" Width="180"/>
-                <DataGridTextColumn IsReadOnly="True" Header="Done" Width="80"/>
-                <DataGridTextColumn IsReadOnly="True" Header="ToDo" Width="*"/>
+                <DataGridTextColumn Binding = "{Binding Path = CreationDate}" IsReadOnly="False" Header="CreationDate" Width="180"/>
+                <DataGridTextColumn Binding="{Binding Path = _isDone}" IsReadOnly="True" Header="Done" Width="80"/>
+                <DataGridTextColumn Binding="{Binding Path = _text}" IsReadOnly="True" Header="ToDo" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
